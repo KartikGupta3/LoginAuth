@@ -71,7 +71,7 @@ const Login = () => {
                   <div>
                     <input
                       placeholder="user@gmail.com"
-                      className="bg-white w-full h-12 rounded-xl pl-4"
+                      className="bg-white w-full h-12 rounded-xl pl-4 text-black"
                     />
                   </div>
                 </div>
@@ -80,7 +80,7 @@ const Login = () => {
                   <div>
                     <input
                       placeholder="Password"
-                      className="bg-white w-full h-12 rounded-xl pl-4"
+                      className="bg-white w-full h-12 rounded-xl pl-4 text-black"
                     />
                   </div>
                 </div>
