@@ -2,8 +2,13 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        vietnam: ["Be Vietnam Pro", "sans-serif"],
+        gilroy: ["Gilroy", "sans-serif"],
+      },
+    },
   },
   plugins: [],
-}
-
+};
