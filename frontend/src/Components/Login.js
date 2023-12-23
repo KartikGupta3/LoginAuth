@@ -7,6 +7,7 @@ import image5 from "./Images/image5.png";
 import image6 from "./Images/image6.png";
 import image7 from "./Images/image7.png";
 import image8 from "./Images/image8.png";
+import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <>
@@ -149,10 +150,12 @@ const Login = () => {
                     </svg>
                   </button>
                 </button>
-                <button className="text-gray-300 text-sm">
-                  Don’t have an account yet?{" "}
-                  <span className="text-white">Register for free</span>
-                </button>
+                <Link to="/SignUp">
+                  <button className="text-gray-300 text-sm">
+                    Don’t have an account yet?{" "}
+                    <span className="text-white">Register for free</span>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

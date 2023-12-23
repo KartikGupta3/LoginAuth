@@ -7,6 +7,7 @@ import image5 from "./Images/image5.png";
 import image6 from "./Images/image6.png";
 import image7 from "./Images/image7.png";
 import image8 from "./Images/image8.png";
+import { Link } from "react-router-dom";
 const SingUp = () => {
   return (
     <>
@@ -62,7 +63,7 @@ const SingUp = () => {
           alt=""
         />
         <div className="flex items-center justify-center bg-gradient-to-r from-[#0F0C29] via-[#302B63] to-[#24243E] h-screen w-screen z-99">
-          <div className="bg-[rgba(88,130,193,0.28)] rounded-[40px] w-[500px] h-[500px] border border-solid backdrop-blur-sm">
+          <div className="bg-[rgba(88,130,193,0.28)] rounded-[40px] w-[500px] h-[550px] border border-solid backdrop-blur-sm">
             <div className="flex flex-col p-12 gap-8 text-white">
               <div className="font-semibold text-xl font-gilroy">Sign Up</div>
               <div className="flex flex-col gap-6">
@@ -97,6 +98,14 @@ const SingUp = () => {
               <button class="flex items-center justify-center bg-[#BD0C47] rounded-[10px] w-full h-[50px]">
                 Register
               </button>
+              <div className="flex items-center justify-center">
+                <Link to="/LogIn">
+                  <button className="text-gray-300 text-sm">
+                    Already have an account ?{" "}
+                    <span className="text-white">Go to Login</span>
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
