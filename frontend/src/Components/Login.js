@@ -1,3 +1,4 @@
+import { useState } from "react";
 import React from "react";
 import image1 from "./Images/image1.png";
 import image2 from "./Images/image2.png";
@@ -8,7 +9,32 @@ import image6 from "./Images/image6.png";
 import image7 from "./Images/image7.png";
 import image8 from "./Images/image8.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleLogIn = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:4170/login",
+        {
+          email,
+          password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.data === "Success") {
+        window.location.href = "/Success";
+      }
+    } catch (error) {
+      console.error("Error: Unexpected response status");
+    }
+  };
   return (
     <>
       <div className="relative">
@@ -71,6 +97,8 @@ const Login = () => {
                   <div>Email</div>
                   <div>
                     <input
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder="user@gmail.com"
                       className="bg-white w-full h-12 rounded-xl pl-4 text-black"
                     />
@@ -80,6 +108,9 @@ const Login = () => {
                   <div>Password</div>
                   <div>
                     <input
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       placeholder="Password"
                       className="bg-white w-full h-12 rounded-xl pl-4 text-black"
                     />
@@ -87,7 +118,10 @@ const Login = () => {
                 </div>
               </div>
               <button className="text-sm">Forgot Password ?</button>
-              <button class="flex items-center justify-center bg-[#BD0C47] rounded-[10px] w-full h-[50px]">
+              <button
+                class="flex items-center justify-center bg-[#BD0C47] rounded-[10px] w-full h-[50px]"
+                onClick={handleLogIn}
+              >
                 Log In
               </button>
               <div className="flex flex-col items-center gap-4">

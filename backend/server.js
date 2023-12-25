@@ -9,6 +9,21 @@ app.use(cors());
 
 mongoose.connect("mongodb://127.0.0.1:27017/User");
 
+app.post("/login", (req, res) => {
+  const { email, password } = req.body;
+  UserModel.findOne({ email: email }).then((users) => {
+    if (users) {
+      if (users.password === password) {
+        res.json("Success");
+      } else {
+        res.json("Incorrect Password");
+      }
+    } else {
+      res.json("Record didn't exist");
+    }
+  });
+});
+
 app.post("/register", (req, res) => {
   UserModel.create(req.body)
     .then((users) => res.json(users))
