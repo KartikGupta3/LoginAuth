@@ -10,7 +10,9 @@ app.use(cors());
 mongoose.connect("mongodb://127.0.0.1:27017/User");
 
 app.post("/register", (req, res) => {
-  UserModel.create(req.body);
+  UserModel.create(req.body)
+    .then((users) => res.json(users))
+    .catch((err) => res.json(err));
 });
 
 app.listen(4170, () => {

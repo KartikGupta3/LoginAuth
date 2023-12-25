@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import image1 from "./Images/image1.png";
 import image2 from "./Images/image2.png";
 import image3 from "./Images/image3.png";
@@ -8,7 +8,36 @@ import image6 from "./Images/image6.png";
 import image7 from "./Images/image7.png";
 import image8 from "./Images/image8.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
 const SingUp = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmpass, setConfirmpass] = useState("");
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    if (password === confirmpass) {
+      try {
+        const response = await axios.post(
+          "http://localhost:4170/register",
+          {
+            email,
+            password,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        if (response.data) {
+          window.location.href = "/LogIn";
+        }
+      } catch (error) {
+        console.error("Error: Unexpected response status");
+      }
+    }
+  };
   return (
     <>
       <div className="relative">
@@ -73,6 +102,8 @@ const SingUp = () => {
                     <input
                       placeholder="user@gmail.com"
                       className="bg-white w-full h-12 rounded-xl pl-4 text-black"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                 </div>
@@ -80,8 +111,11 @@ const SingUp = () => {
                   <div>Password</div>
                   <div>
                     <input
+                      type="password"
                       placeholder="Password"
                       className="bg-white w-full h-12 rounded-xl pl-4 text-black"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
                 </div>
@@ -89,13 +123,19 @@ const SingUp = () => {
                   <div>Confirm Password</div>
                   <div>
                     <input
+                      type="password"
                       placeholder="Password"
                       className="bg-white w-full h-12 rounded-xl pl-4 text-black"
+                      value={confirmpass}
+                      onChange={(e) => setConfirmpass(e.target.value)}
                     />
                   </div>
                 </div>
               </div>
-              <button class="flex items-center justify-center bg-[#BD0C47] rounded-[10px] w-full h-[50px]">
+              <button
+                class="flex items-center justify-center bg-[#BD0C47] rounded-[10px] w-full h-[50px]"
+                onClick={handleRegister}
+              >
                 Register
               </button>
               <div className="flex items-center justify-center">
