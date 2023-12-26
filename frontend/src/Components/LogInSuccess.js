@@ -61,8 +61,11 @@ const LogInSuccessPage = () => {
           src={image8}
           alt=""
         />
-        <div className="flex items-center justify-center bg-gradient-to-r from-[#0F0C29] via-[#302B63] to-[#24243E] h-screen w-screen z-[9999] text-3xl text-white font-serif">
+        <div className="flex flex-col items-center justify-center gap-4 bg-gradient-to-r from-[#0F0C29] via-[#302B63] to-[#24243E] h-screen w-screen z-[9999] text-3xl text-white font-serif">
           Log In Successful
+          <button class="flex items-center justify-center bg-[#BD0C47] rounded-[10px] w-24 text-lg h-[50px]">
+            LogOut
+          </button>
         </div>
       </div>
     </>

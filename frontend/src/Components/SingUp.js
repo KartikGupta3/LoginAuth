@@ -10,7 +10,7 @@ import image8 from "./Images/image8.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 const SingUp = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpass, setConfirmpass] = useState("");
 
@@ -21,7 +21,7 @@ const SingUp = () => {
         const response = await axios.post(
           "http://localhost:4170/register",
           {
-            email,
+            username,
             password,
           },
           {
@@ -30,7 +30,8 @@ const SingUp = () => {
             },
           }
         );
-        if (response.data) {
+        console.log(response.data);
+        if (response.data.status === "Success") {
           window.location.href = "/LogIn";
         }
       } catch (error) {
@@ -97,13 +98,13 @@ const SingUp = () => {
               <div className="font-semibold text-xl font-gilroy">Sign Up</div>
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col gap-2 text-white text-sm text-black">
-                  <div>Email</div>
+                  <div>Username</div>
                   <div>
                     <input
-                      placeholder="user@gmail.com"
+                      placeholder="username"
                       className="bg-white w-full h-12 rounded-xl pl-4 text-black"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
                     />
                   </div>
                 </div>
